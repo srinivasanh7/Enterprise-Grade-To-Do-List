@@ -1,117 +1,181 @@
-# 🧠 Natural Language Task Manager
+# 🧠 Natural Language Task Manager + AI Meeting Transcript Parser
 
-This is a full-stack web app that lets users add natural language tasks like:
+This is an AI-powered web application that allows users to:
 
-```
-"Finish landing page Aman by 11pm 20th June"
-"Call client Rajeev tomorrow 5pm P1"
-```
+- ✅ Add tasks using **natural language**
+- 📝 Paste an entire **meeting transcript** to extract structured tasks
+- 📋 View, edit, and manage tasks in a beautiful UI
 
-The app uses **OpenAI** to extract structured information from these sentences, such as:
-
-- Task Name  
-- Assignee  
-- Due Date & Time  
-- Priority (P1, P2, P3, P4 — default: P3)
+Built with:
+- 💬 OpenAI GPT-4o for natural language understanding
+- ⚙️ Node.js + Express (Backend)
+- ⚛️ React + Vite (Frontend)
+- 🎨 Tailwind CSS (Styling)
 
 ---
 
-## ⚙️ Tech Stack
+## 🔧 Setup Instructions
 
-- **Frontend:** React (Vite)
-- **Backend:** Node.js + Express
-- **AI Engine:** OpenAI GPT-4o or GPT-3.5-turbo
+### 🖥 Backend Setup
 
----
+1. Navigate to the backend folder:
+   ```bash
+   cd backend
+   ```
 
-## 🚀 Features
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-- 🌐 Natural language task input  
-- 🧠 AI-powered parsing using OpenAI  
-- 📋 Task list UI with task, assignee, due date/time, and priority  
-- ⚡ Fast frontend using Vite  
-- 🔄 Bonus: Easily extend to support editing or storing tasks
+3. Create a `.env` file:
+   ```
+   OPENAI_API_KEY=your_openai_key_here
+   ```
 
----
-
-## 🛠️ Setup Instructions
-
-### 1. Clone the repository
-
-### 2. Backend Setup (Node.js + Express)
-
-```bash
-cd backend
-npm install
-```
-
-#### Create `.env` file
-
-```env
-OPENAI_API_KEY=your_openai_api_key
-PORT=5000
-```
-
-#### Run the backend
-
-```bash
-node index.js
-```
+4. Start the server:
+   ```bash
+   node index.js
+   ```
 
 > Server runs at: `http://localhost:5000`
 
 ---
 
-### 3. Frontend Setup (React + Vite)
+### 🌐 Frontend Setup
 
-```bash
-cd ../frontend
-npm install
-npm run dev
-```
+1. Navigate to the frontend folder:
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the frontend:
+   ```bash
+   npm run dev
+   ```
 
 > App runs at: `http://localhost:5173`
 
 ---
 
-## 🧪 Testing the API (Optional)
+## 🚀 Features
 
-Use Thunder Client or Postman:
+### 1. ✍️ Natural Language Task Parser
 
-**POST** `http://localhost:5000/api/task/parse`
+Users can input tasks in plain English.
 
-**Body:**
-
-```json
-{
-  "input": "Finish landing page Aman by 11pm 20th June"
-}
+**Example Input:**
+```
+Finish landing page Aman by 11pm 20th June P1
 ```
 
----
-
-## 📦 API Output Example
-
+**Parsed Output:**
 ```json
 {
   "task": "Finish landing page",
   "assignee": "Aman",
   "due": "2025-06-20T23:00:00",
-  "priority": "P3"
+  "priority": "P1"
 }
+```
+
+**API Endpoint:**
+```
+POST /api/task/parse
 ```
 
 ---
 
-## 📌 To-Do / Future Enhancements
+### 2. 🧾 AI Meeting Transcript Parser
 
-- ✅ Inline editing of tasks  
-- ⬜ Drag & drop task reordering  
-- ⬜ Task status (To Do / In Progress / Done)  
-- ⬜ Save tasks to MongoDB  
-- ⬜ User login and task ownership
+Paste a full meeting transcript and extract structured tasks.
+
+**Example Transcript:**
+```
+Aman you take the landing page by 10pm tomorrow.
+Rajeev you take care of client follow-up by Wednesday.
+Shreya please review the marketing deck tonight.
+```
+
+**Parsed Output:**
+```json
+[
+  {
+    "task": "Take the landing page",
+    "assignee": "Aman",
+    "due": "2025-06-14T22:00:00",
+    "priority": "P3"
+  },
+  {
+    "task": "Take care of client follow-up",
+    "assignee": "Rajeev",
+    "due": "2025-06-18T23:59:59",
+    "priority": "P3"
+  },
+  {
+    "task": "Review the marketing deck",
+    "assignee": "Shreya",
+    "due": "2025-06-13T23:59:59",
+    "priority": "P3"
+  }
+]
+```
+
+**API Endpoint:**
+```
+POST /api/meeting/parse
+```
 
 ---
 
+## 🔍 Difference Between the Two APIs
 
+| Feature       | `/api/task/parse`                | `/api/meeting/parse`                 |
+|---------------|----------------------------------|--------------------------------------|
+| Input         | Single natural language sentence | Full meeting transcript              |
+| Output        | One structured task object       | Array of structured task objects     |
+| Use Case      | Manually typed tasks             | Automated transcript-to-tasks        |
+| Complexity    | Simple parsing                   | Multiple task extraction             |
 
+---
+
+## 🖼 Screenshots
+
+> 📌 Replace these filenames with your actual screenshots
+
+### 🔹 Task from Natural Language Input
+![Task Input](./screenshots/task-input.png)
+
+### 🔹 Parsed Tasks from Meeting Transcript
+![Transcript Output](./screenshots/transcript-output.png)
+
+---
+
+## 🛠 Tech Stack
+
+- **OpenAI GPT-4o** — Natural language understanding
+- **Node.js + Express** — API server
+- **React + Vite** — Frontend framework
+- **Tailwind CSS** — Styling and responsive layout
+
+---
+
+## 📁 Folder Structure
+
+```
+project-root/
+├── backend/
+│   ├── index.js
+│   ├── routes/
+│   └── .env
+├── frontend/
+│   ├── src/
+│   └── vite.config.js
+├── screenshots/
+└── README.md
+```
