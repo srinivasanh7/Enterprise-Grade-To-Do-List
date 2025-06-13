@@ -152,7 +152,8 @@ POST /api/meeting/parse
 ![Task Input](./screenshots/task-input.png)
 
 ### 🔹 Parsed Tasks from Meeting Transcript
-![Transcript Output](./screenshots/transcript-output.png)
+![Transcript Output](https://github.com/srinivasanh7/Enterprise-Grade-To-Do-List/blob/master/screenshots/transcript-output.png?raw=true)
+
 
 ---
 
