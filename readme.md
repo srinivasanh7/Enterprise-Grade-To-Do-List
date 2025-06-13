@@ -4,14 +4,12 @@ This is an AI-powered web application that allows users to:
 
 - ✅ Add tasks using **natural language**
 - 📝 Paste an entire **meeting transcript** to extract structured tasks
-- 📋 View, edit, and manage tasks in a beautiful UI
+- 📋 View, edit, and manage tasks in a UI
 
 Built with:
 - 💬 OpenAI GPT-4o for natural language understanding
 - ⚙️ Node.js + Express (Backend)
 - ⚛️ React + Vite (Frontend)
-- 🎨 Tailwind CSS (Styling)
-
 ---
 
 ## 🔧 Setup Instructions
@@ -148,8 +146,10 @@ POST /api/meeting/parse
 
 > 📌 Replace these filenames with your actual screenshots
 
+## 🖼 Screenshots
+
 ### 🔹 Task from Natural Language Input
-![Task Input](./screenshots/task-input.png)
+![Task Input](https://github.com/srinivasanh7/Enterprise-Grade-To-Do-List/blob/master/screenshots/task-input.png?raw=true)
 
 ### 🔹 Parsed Tasks from Meeting Transcript
 ![Transcript Output](https://github.com/srinivasanh7/Enterprise-Grade-To-Do-List/blob/master/screenshots/transcript-output.png?raw=true)
