@@ -14,7 +14,7 @@ export default function TaskInput({ onAdd }) {
       const res = await axios.post('http://localhost:5000/api/task/parse', { input });
       console.log('Parsed task:', res);
       onAdd(res.data);
-      setInput('');
+    //   setInput('');
     } catch (err) {
       alert('Error parsing task');
     } finally {
